@@ -1,0 +1,49 @@
+{
+  "name": "dbuilder",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A simple tool for managing databases",
+  "author": "Bennjamon (benjaminrivas500@gmail.com)",
+  "main": "build/app/main.js",
+  "scripts": {
+    "build:client": "tsc && vite build",
+    "build:app": "tsc -p tsconfig.app.json",
+    "build": "npm run build:client && npm run build:app",
+    "dist": "npm run clear && npm run build && electron-builder",
+    "clear": "rimraf build && rimraf dist",
+    "start:client": "vite serve",
+    "start:app": "electron build/app/main.js",
+    "start": "npm run build && npm run start:app",
+    "dev:client": "vite",
+    "dev:app": "nodemon",
+    "dev": "concurrently -k \"npm run dev:client\" \"npm run dev:app\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "cross-env": "^7.0.3",
+    "electron": "^25.2.0",
+    "electron-builder": "^24.4.0",
+    "nodemon": "^3.0.1",
+    "rimraf": "^5.0.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  },
+  "nodemonConfig": {
+    "ext": "ts",
+    "exec": "npm run build:app && npm run start:app"
+  },
+  "build": {
+    "appId": "DBuilder",
+    "asar": true,
+    "files": [
+      "build/**/*"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "rootDir": "src/app",
+    "outDir": "build/app",
+    "declaration": false,
+    "composite": false,
+    "module": "CommonJS"
+  },
+  "include": ["src/app"]
+}
