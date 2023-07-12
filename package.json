@@ -16,7 +16,7 @@
     "start": "npm run build && npm run start:app",
     "dev:client": "vite",
     "dev:app": "nodemon",
-    "dev": "concurrently -k \"npm run dev:client\" \"npm run dev:app\""
+    "dev": "cross-env IS_IN_DEVELOPMENT=true concurrently -k \"npm run dev:client\" \"npm run dev:app\""
   },
   "dependencies": {
     "concurrently": "^8.2.0",
@@ -37,7 +37,10 @@
   },
   "nodemonConfig": {
     "ext": "ts",
-    "exec": "npm run build:app && npm run start:app"
+    "exec": "npm run build:app && npm run start:app",
+    "ignore": [
+      "src/client/**"
+    ]
   },
   "build": {
     "appId": "DBuilder",

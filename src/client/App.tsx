@@ -1,7 +1,15 @@
+import { useContext } from "react";
 import "./App.css";
+import ScreensContext from "./Contexts/Screens/Screens.context";
 
 function App() {
-  return <h1>Hello World</h1>;
+  const { CurrentScreen } = useContext(ScreensContext);
+
+  return (
+    <h1>
+      <CurrentScreen />
+    </h1>
+  );
 }
 
 export default App;
